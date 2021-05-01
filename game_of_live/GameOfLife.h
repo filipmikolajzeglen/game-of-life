@@ -11,8 +11,8 @@ public:
     std::vector <std::vector<Cell>> boardPtr;
     int size;
 
-    static T alive;
-    static U dead;
+    T alive;
+    U dead;
 
     void printBoard();
 

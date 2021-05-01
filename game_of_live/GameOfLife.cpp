@@ -3,14 +3,15 @@
 #include "GameOfLife.h"
 
 template<class T, class U>
-GameOfLife<T, U>::GameOfLife(T alive, U dead, int size) : size(size), dead(dead), alive(alive) {}
+GameOfLife<T, U>::GameOfLife(T alive, U dead, int size) : dead(dead), alive(alive), size(size) {}
 
 void GameOfLife<>::printBoard() {
     for (int i = 0; i < this->size; i++) {
         for (int j = 0; j < this->size; j++) {
             if (this->boardPtr[i][j].isAlife) {
                 std::cout << alive;
-            } else {
+            }
+            else {
                 std::cout << dead;
             }
             std::cout << " ";
@@ -36,7 +37,7 @@ void GameOfLife<>::processBoard() {
         for (int j = 0; j < this->size; j++) {
             int amountOfLiveSiblings = getAmmountOfLiveSiblings(i, j);
             this->boardPtr[i][j].willBeAlive = determineIfDeadOrAlife(amountOfLiveSiblings,
-            this->boardPtr[i][j].isAlife);
+                this->boardPtr[i][j].isAlife);
         }
     }
 }
@@ -49,7 +50,7 @@ void GameOfLife<>::syncStateOfCellBoards() {
     }
 }
 
-int GameOfLife<>::getAmmountOfLiveSiblings(int y, int x) {
+int GameOfLife<int, int>::getAmmountOfLiveSiblings(int y, int x) {
     int amountOfLiveSiblings = 0;
     // process vertical siblings
     for (int i = y - 1; i <= y + 1; i++) {
@@ -65,9 +66,9 @@ int GameOfLife<>::getAmmountOfLiveSiblings(int y, int x) {
     return amountOfLiveSiblings;
 }
 
-int GameOfLife<>::determineIfDeadOrAlife(int amountOfLiveSiblings, bool initialyAliveOrDead) {
-    if (initialyAliveOrDead) { return checkInitialyAlive(amountOfLiveSiblings); }
-    else { return checkInitialyDead(amountOfLiveSiblings); }
+int GameOfLife<int, bool>::determineIfDeadOrAlife(int amountOfLiveSiblings, bool initialyAliveOrDead) {
+    if (initialyAliveOrDead) return checkInitialyAlive(amountOfLiveSiblings);
+    else return checkInitialyDead(amountOfLiveSiblings);
 }
 
 int GameOfLife<>::checkInitialyAlive(int amountOfLiveSiblings) {
