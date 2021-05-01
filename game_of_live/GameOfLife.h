@@ -3,26 +3,30 @@
 #include <vector>
 #include "Cell.h"
 
+template<class T = char, class U = char>
 class GameOfLife {
 public:
 
-	template<typename T = char, typename U = char>
-	GameOfLife(T alive, U dead, int size);
+    GameOfLife(T alive, U dead, int size);
+    std::vector <std::vector<Cell>> boardPtr;
+    int size;
 
-		std::vector<std::vector<Cell>> boardPtr;
-		int size;
+    static T alive;
+    static U dead;
 
-		template<typename T>
-		static T alive;
-		template<typename U>
-		static U dead;
+    void printBoard();
 
-		void printBoard();
-		void createBoard();
-		void processBoard();
-		void syncStateOfCellBoards();
-		int getAmmountOfLiveSiblings(int y, int x);
-		int determineIfDeadOrAlife(int amountOfLiveSiblings, bool initialyAliveOrDead);
-		int checkInitialyAlive(int amountOfLiveSiblings);
-		int checkInitialyDead(int amountOfLiveSiblings);
+    void createBoard();
+
+    void processBoard();
+
+    void syncStateOfCellBoards();
+
+    int getAmmountOfLiveSiblings(int y, int x);
+
+    int determineIfDeadOrAlife(int amountOfLiveSiblings, bool initialyAliveOrDead);
+
+    int checkInitialyAlive(int amountOfLiveSiblings);
+
+    int checkInitialyDead(int amountOfLiveSiblings);
 };
