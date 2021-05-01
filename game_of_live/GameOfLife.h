@@ -2,6 +2,7 @@
 
 #include <vector>
 #include "Cell.h"
+#include <iostream>
 
 template<class T = char, class U = char>
 class GameOfLife {

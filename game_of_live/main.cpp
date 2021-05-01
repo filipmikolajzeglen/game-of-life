@@ -2,13 +2,14 @@
 #include <Windows.h>
 #include <memory>
 #include "GameOfLife.h"
+#include "GameOfLife.cpp"
 
 #define AMOUNT_OF_ITERATIONS    100
 #define DELEY_BETWEEN_PROCESS   1000 //ms
 #define SIZE                    20
 
 int main() {
-    std::unique_ptr <GameOfLife<>> Game(new GameOfLife<>('0', '.', SIZE));
+    std::unique_ptr <GameOfLife<>> Game(new GameOfLife<>('Q', '.', SIZE));
     Game->createBoard();
 
     Game->boardPtr[1][0].isAlife = true;
