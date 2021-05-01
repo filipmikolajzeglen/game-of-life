@@ -8,7 +8,7 @@
 #define SIZE                    20
 
 int main() {
-    std::unique_ptr<GameOfLife> Game(new GameOfLife(SIZE));
+    std::unique_ptr<GameOfLife> Game(new GameOfLife('0', '.', SIZE));
     Game->createBoard();
 
     Game->boardPtr[1][0].isAlife = true;
@@ -22,8 +22,7 @@ int main() {
     for (int i = 0; i <= AMOUNT_OF_ITERATIONS; i++) {
         std::cout << "Iteration " << timer << std::endl;
 
-        Game->printBoard(1,' ');
-
+        Game->printBoard();
         Game->processBoard();
         Game->syncStateOfCellBoards();
 

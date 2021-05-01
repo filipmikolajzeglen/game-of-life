@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include "Cell.h"
+#include <iostream>
 
 template <class T, class U>
 class Board
@@ -13,34 +14,6 @@ public:
 	int size;
 	std::vector<std::vector<Cell>> boardPtr;
 
-	void printBoard(T alive, U dead);
+	void printBoard();
 	void syncStateOfCellBoards();
 };
-
-template<class T, class U>
-inline Board<T, U>::Board(T aliveCellMark, U deadCellMark, int size)
-{
-}
-
-template<class T, class U>
-inline void Board<T, U>::printBoard(T alive, U dead)
-{
-	for (int i = 0; i < this->size; i++) {
-		for (int j = 0; j < this->size; j++) {
-			if (this->boardPtr[i][j].isAlife) {
-				std::cout << alive;
-			}
-			else {
-				std::cout << dead;
-			}
-			std::cout << " ";
-		}
-		std::cout << std::endl;
-
-	}
-}
-
-template<class T, class U>
-inline void Board<T, U>::syncStateOfCellBoards()
-{
-}
